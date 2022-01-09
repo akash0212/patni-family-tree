@@ -1,0 +1,394 @@
+
+<html>
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bingo/Housie/Tambola Board</title>
+        <style>
+          /*Now the CSS*/
+
+          * {
+          margin: 0;
+          padding: 0;
+          }
+          /*added*/
+
+          .tree {
+          white-space: nowrap;
+          overflow: auto;
+
+          }
+          img
+          {
+            border-radius: 50%;
+            width: 100px;
+          }
+
+          .tree ul {
+          padding-top: 20px;
+          position: relative;
+          transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          }
+
+          .tree li {
+          text-align: center;
+          list-style-type: none;
+          position: relative;
+          padding: 20px 5px 0 5px;
+          transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          /*added for long names*/
+
+          float: none;
+          display: inline-block;
+          vertical-align: top;
+          white-space: nowrap;
+          margin: 0 -2px 0 -2px;
+          }
+          /*We will use ::before and ::after to draw the connectors*/
+
+          .tree li::before,
+          .tree li::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 50%;
+          border-top: 1px solid #ccc;
+          width: 50%;
+          height: 20px;
+          }
+
+          .tree li::after {
+          right: auto;
+          left: 50%;
+          border-left: 1px solid #ccc;
+          }
+          /*We need to remove left-right connectors from elements without
+          any siblings*/
+
+          .tree li:only-child::after,
+          .tree li:only-child::before {
+          display: none;
+          }
+          /*Remove space from the top of single children*/
+
+          .tree li:only-child {
+          padding-top: 0;
+          }
+          /*Remove left connector from first child and
+          right connector from last child*/
+
+          .tree li:first-child::before,
+          .tree li:last-child::after {
+          border: 0 none;
+          }
+          /*Adding back the vertical connector to the last nodes*/
+
+          .tree li:last-child::before {
+          border-right: 1px solid #ccc;
+          border-radius: 0 5px 0 0;
+          -webkit-border-radius: 0 5px 0 0;
+          -moz-border-radius: 0 5px 0 0;
+          }
+
+          .tree li:first-child::after {
+          border-radius: 5px 0 0 0;
+          -webkit-border-radius: 5px 0 0 0;
+          -moz-border-radius: 5px 0 0 0;
+          }
+          /*Time to add downward connectors from parents*/
+
+          .tree ul ul::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          border-left: 1px solid #ccc;
+          width: 0;
+          height: 20px;
+          }
+
+          .tree li a {
+          border: 1px solid #ccc;
+          padding: 5px 10px;
+          text-decoration: none;
+          color: #666;
+          font-family: arial, verdana, tahoma;
+          font-size: 11px;
+          display: inline-block;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          }
+          /*Time for some hover effects*/
+          /*We will apply the hover effect the the lineage of the element also*/
+
+          .tree li a:hover,
+          .tree li a:hover+ul li a {
+          background: #c8e4f8;
+          color: #000;
+          border: 1px solid #94a0b4;
+          }
+          /*Connector styles on hover*/
+
+          .tree li a:hover+ul li::after,
+          .tree li a:hover+ul li::before,
+          .tree li a:hover+ul::before,
+          .tree li a:hover+ul ul::before {
+          border-color: #94a0b4;
+          }
+
+          .husband {
+          /* float: left; */
+              margin-left: -17px;
+          }
+
+          .wife {
+          /* margin-left: 10px; */
+          }
+
+          .single {
+           margin-right: 10px;
+          }
+
+          .wife::before {
+          /* pseudo CSS, will need to be modified */
+
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 50%;
+          /* border-top: 1px solid #ccc; */
+          width: 50%;
+          height: 20px;
+          }
+          /*Thats all. I hope you enjoyed it.
+          Thanks :)*/
+        </style>
+    </head>
+    <body>
+      <div class="tree">
+        <ul>
+          <li>
+            <a href="#">Late Bhagtu Lal Ji Patni</a>--
+            --<a href="#">Late Judav Devi Patni</a>
+            <ul>
+              <li>
+                <a href="#">Late Manphuli Ji Patni</a>
+              </li>
+              <li>
+                <a href="#">Late Mahavir Ji Patni</a>
+              </li>
+              <li>
+                <a href="#">Bhag Chand Ji Patni</a>
+              </li>
+              <li>
+                <a href="#">Deep Chand Ji Patni</a>
+              </li>
+              <li>
+                <a class="husband" href="#">
+                  Late ShriChand Patni
+                </a>--
+                --<a class="wife" href="#">Shanta Devi Patni</a>
+                <ul>
+                  <li>
+                    <a class="husband" href="#">Manoj Kumar Jain</a>--
+                    --<a class="wife" href="#">Nilima Jain</a>
+                    <ul>
+                      <li>
+                        <a href="#">Megha Jain</a>
+                      </li>
+                      <li>
+                        <a href="#">Akash Jain</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Seema Chabra</a>
+                  </li>
+                  <li>
+                    <a href="#">Shashi Godha</a>
+                  </li>
+                  <li>
+                    <a class="single" href="#">Anita Sethi</a>
+                  </li>
+                  <li>
+                    <a class="husband" href="#">Navin Kumar Jain</a>--
+                    --<a class="wife" href="#">Anshul Patni</a>
+                    <ul>
+                      <li>
+                        <a href="#">Karan Jain</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- <li>
+                  <a class="husband" href="#">Grand Child</a>
+                  <a class="wife" href="#">Wife</a>
+                  <ul>
+                     <li><a href="#">Kid</a></li>
+                     <li><a href="#">Kid</a></li>
+                  </ul>
+              </li> -->
+
+                </ul>
+              </li>
+              <li>
+                <a href="#">Gyan Chand Ji Patni</a>
+              </li>
+              <li>
+                <a href="#">Vimla Devi</a>
+              </li>
+              <li>
+                <a href="#">Padam Ji Patni</a>
+              </li>
+              <li>
+                <a href="#">Kamla Devi</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+          /* comment from user paul for php database
+
+          I have my details in a mysql database and used this perl script to complete the html page. I used the css code as shown but added
+
+          display: inline-block;
+          white-space: nowrap;
+          vertical-align: top;
+          margin: 0 -2px 0 -2px;
+          instead of
+          float: left;
+          for .tree li
+
+          #!/usr/bin/perl
+          use DBI;
+          use CGI;
+
+          print CGI::header();
+          my $Familyname = ‘Familyname’;#your family name here
+          #start of html code
+          print &lt;Familyname Family Tree#your family name here
+          #your css file here
+          endmarker
+
+          $db = ‘Families’; $host = ‘localhost’; $user = ‘user’; $password = ‘password’;#your details here
+          # connect
+          $dbh = DBI-&gt;connect(“DBI:mysql:database=$db;host=$host”, $user, $password, {RaiseError =&gt; 1});
+          #get rid of left over table descendant1
+          my $sth = $dbh-&gt;prepare(“DROP TABLE IF EXISTS descendants1″);
+          $sth-&gt;execute();
+          #make a new table descendants1
+          my $sth = $dbh-&gt;prepare(“CREATE TABLE descendants1 (ID INT, Family VARCHAR(30), First VARCHAR(30), Born DATE, FatherID INT, MotherID INT)”);
+          $sth-&gt;execute();
+
+          my $sth=$dbh-&gt;prepare(“select * from family where Family = ‘$Familyname’”);#select your familyname from your database
+          $sth-&gt;execute();
+
+          while(my ($ID, $Familyname, $Firstname, $Birth,$Death,$FatherID,$MotherID,$PartnerID,$Comments) = $sth-&gt;fetchrow_array()) {
+          #insert details into table descendants1
+          my $sth = $dbh-&gt;prepare(“insert into descendants1(ID,Family, First, Born,FatherID,MotherID) values (‘$ID’,'$Familyname’, ‘$Firstname’, ‘$Birth’, ‘$FatherID’, ‘$MotherID’)”);
+          $sth-&gt;execute();
+          }#end while 1
+          my $a = “0″;
+          my $b = “0″;
+          my $y =”0″;
+          my $x =”0″;
+          my $i = “1″;
+          $ID[$i] = “0″;
+          #more html
+          print &lt;
+          endmarker
+
+          while ($i &gt;0){
+          #select_oldest {
+          my $sth=$dbh-&gt;prepare(“select * from descendants1 where FatherID = ‘$ID[$i]‘ or MotherID = ‘$ID[$i]‘ order by Born ASC LIMIT 1″);
+          $sth-&gt;execute();
+          #while 3
+          while(my ($ID, $Familyname, $Firstname, $Birth,$Death,$FatherID,$MotherID,$PartnerID,$Comments) = $sth-&gt;fetchrow_array()) {
+          $y = “1″;
+          $x = “$i”;
+          if ($a&lt;$i){
+          #more html. If children present start a new list.
+          print “”;
+          $a++;
+          }
+          while ($a&gt;$i){
+          more html, end lists(may be more than one)
+          print “”;
+          $a–;
+          }
+
+          #reset x
+          $x=”1″;
+          #?mysql date format
+          my $sth = $dbh-&gt;prepare(“SELECT DATE_FORMAT(‘$Birth’, ‘%d/%c/%Y’)”);
+          $sth-&gt;execute();
+          while(my ($Birth) = $sth-&gt;fetchrow_array()) {
+          #more html. fill lists
+          print &lt;$Firstname $Familyname $Birth
+
+          endmarker
+          }
+          #delete selected descendant from descendants1 so they won’t be chosen again
+          my $sth=$dbh-&gt;prepare(“delete from descendants1 where ID = ‘$ID’”);
+          $sth-&gt;execute();
+          $i++;
+          $ID[$i]=$ID;
+          #select partner from original database
+          my $sth=$dbh-&gt;prepare(“select * from family where PartnerID = ‘$ID’”);
+          $sth-&gt;execute();
+          while(my ($ID, $Familyname, $Firstname, $Birth,$Death,$FatherID,$MotherID,$PartnerID,$Comments) = $sth-&gt;fetchrow_array()) {
+          my $sth = $dbh-&gt;prepare(“SELECT DATE_FORMAT(‘$Birth’, ‘%d/%c/%Y’)”);
+          $sth-&gt;execute();
+          while(my ($Birth) = $sth-&gt;fetchrow_array()) {
+          #more html. add partner with original selection
+          print &lt;and$Firstname $Familyname $Birth
+
+          endmarker
+
+          }
+          my $sth=$dbh-&gt;prepare(“delete from descendants1 where ID = ‘$ID’”);
+          $sth-&gt;execute();
+          }
+
+          }#end while 3
+          if ($y == “0″){
+          $ID[$i]++;
+          }
+          else{
+          if ($x == “1″){
+          $x=”0″;
+          $ID = $ID[$i];
+          }
+          else {
+          $i–;
+          $ID = $ID[$i];
+          }
+          }
+          }
+
+
+
+
+          I have added the following which then includes children with a different family name to ‘familyname’ who are still descended from the original person.
+
+
+
+          (added before the ‘delete from’ section)
+          my $sth=$dbh-&gt;prepare(“replace into descendants1(ID,Family, First, Born,FatherID,MotherID) select ID,Family, First, Born,FatherID,MotherID from family where FatherID =’$ID’ or MotherID = ‘$ID’”);
+          $sth-&gt;execute();
+          }#end while 7
+          */
+        </script>
+    </body>
+</html>
