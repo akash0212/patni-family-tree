@@ -231,19 +231,19 @@
           <img src="img/GreatGrandMa.jpeg">
           <br />Late Judav Devi Patni</a>
         <ul>
-          <li>
+          <li style="z-index: 10000;">
             <a href="#">Late Manphuli Ji Patni</a>
           </li>
-          <li>
+          <li style="z-index: 10000;">
             <a href="#">Late Mahavir Ji Patni</a>
           </li>
-          <li>
+          <li style="z-index: 10000;">
             <a href="#">Bhag Chand Ji Patni</a>
           </li>
-          <li>
+          <li style="z-index: 10000;">
             <a href="#">Deep Chand Ji Patni</a>
           </li>
-          <li id="julie" style="margin-left: -340px;margin-right: -340px;">
+          <li id="dadu" style="margin-left: -340px;margin-right: -340px;">
             <a class="husbandwithimg" href="#">
               <img src="img/GrandPa.jpeg">
               <br />
@@ -338,8 +338,8 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     window.onload = function() {
-      const julie = document.getElementById('julie');
-      julie.scrollIntoView();
+      const dadu = document.getElementById('dadu');
+      dadu.scrollIntoView();
 
       $("ul").find("li").each(function(i) {
         $(this).delay(500 * i).show(0);
