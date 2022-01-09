@@ -13,12 +13,16 @@
           margin: 0;
           padding: 0;
           }
+          ul li {
+            display: none;
+          }
           /*added*/
 
           .tree {
           white-space: nowrap;
           overflow: auto;
-
+          height: 100vh;
+          /* background-image: url("img/bg-tree.jpeg"); */
           }
           img
           {
@@ -182,8 +186,8 @@
       <div class="tree">
         <ul>
           <li>
-            <a href="#">Late Bhagtu Lal Ji Patni</a>--
-            --<a href="#">Late Judav Devi Patni</a>
+            <a class="husband" href="#">Late Bhagtu Lal Ji Patni</a>--
+            --<a class="wife" href="#">Late Judav Devi Patni</a>
             <ul>
               <li>
                 <a href="#">Late Manphuli Ji Patni</a>
@@ -270,6 +274,10 @@
         window.onload = function() {
           const julie = document.getElementById('julie');
           julie.scrollIntoView();
+
+          $("ul").find("li").each(function(i) {
+            $(this).delay(500 * i).show(0);
+          });
         };
           /* comment from user paul for php database
 
