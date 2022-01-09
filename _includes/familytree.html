@@ -197,7 +197,7 @@
               <li>
                 <a href="#">Deep Chand Ji Patni</a>
               </li>
-              <li>
+              <li id="julie" style="margin-left: -210px;margin-right: -210px;">
                 <a class="husbandwithimg" href="#">
                   <img src="img/GrandPa.jpeg">
                   <br/>
@@ -267,6 +267,10 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script>
+        window.onload = function() {
+          const julie = document.getElementById('julie');
+          julie.scrollIntoView();
+        };
           /* comment from user paul for php database
 
           I have my details in a mysql database and used this perl script to complete the html page. I used the css code as shown but added
