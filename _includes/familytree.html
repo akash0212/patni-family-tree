@@ -23,9 +23,11 @@
     .tree {
       white-space: nowrap;
       overflow: auto;
-      height: 100vh;
+      /* height: 90vh; */
       /* background-image: url("img/bg-tree1.jpeg"); */
       text-align: center;
+      padding-bottom: 30px;
+      padding-top: 70px;
     }
 
     img {
@@ -212,6 +214,9 @@
       background: #1abc9c;
       color: white;
       font-size: 15px;
+      position: fixed;
+      width: 100%;
+      z-index: 100000;
     }
   </style>
 </head>
@@ -243,8 +248,8 @@
           <li style="z-index: 10000;">
             <a href="#">Deep Chand Ji Patni</a>
           </li>
-          <li id="dadu" style="margin-left: -340px;margin-right: -340px;">
-            <a class="husbandwithimg" href="#">
+          <li style="margin-left: -340px;margin-right: -340px;">
+            <a id="dadu" class="husbandwithimg" href="#">
               <img src="img/GrandPa.jpeg">
               <br />
               Late ShriChand Patni
@@ -339,7 +344,7 @@
   <script>
     window.onload = function() {
       const dadu = document.getElementById('dadu');
-      dadu.scrollIntoView();
+      dadu.scrollIntoView({behavior: "smooth", block: "start", inline: "center"});
 
       $("ul").find("li").each(function(i) {
         $(this).delay(500 * i).show(0);
