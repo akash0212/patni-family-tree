@@ -169,6 +169,10 @@
       border: 1px solid #94a0b4;
     }
 
+    /* .tree li a:focus ~ul{
+      visibility: hidden;
+    } */
+
     /*Connector styles on hover*/
 
     .tree li a:hover~ul li::after,
@@ -262,7 +266,8 @@
               <br />
               Deep Chand Patni</a>
           </li>
-          <li style="margin-left: -340px;margin-right: -340px;">
+          <li>
+          <!-- <li style="margin-left: -340px;margin-right: -340px;"> -->
             <a id="dadu" class="husbandwithimg" href="#">
               <img src="img/GrandPa.jpeg">
               <br />
@@ -301,22 +306,76 @@
                 </ul>
               </li>
               <li>
-                <a href="#">
+                <a class="husbandwithimg" href="#">
                   <img src="img/SeemaJ.jpeg">
                   <br />
-                  Seema Chabra</a>
+                  Seema Chabra</a>--
+                --<a class="wife" href="#">
+                  <img src="img/Ajay.JPG">
+                  <br />Ajay Chabra</a>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="img/Gdgd.JPG">
+                        <br />Bhawika</a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="img/Chotu.JPG">
+                        <br />
+                        Aashika</a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="img/Nirnay.JPG">
+                        <br />
+                        Nirnay</a>
+                    </li>
+                  </ul>
               </li>
               <li>
-                <a href="#">
+                <a class="husbandwithimg" href="#">
                   <img src="img/Shashi.jpeg">
                   <br />
-                  Shashi Godha(Bobby)</a>
+                  Shashi Godha(Bobby)</a>--
+                --<a class="wife" href="#">
+                  <img src="img/Sanjay.JPG">
+                  <br />Sanjay Godha</a>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="img/Rahul.JPG">
+                        <br />Rahul Godha</a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="img/Guddu.JPG">
+                        <br />
+                        Sanchay Godha</a>
+                    </li>
+                  </ul>
               </li>
               <li>
-                <a class="single" href="#">
+                <a class="husbandwithimg" href="#">
                   <img src="img/Ani.jpeg">
                   <br />
-                  Anita Sethi</a>
+                  Anita Sethi</a>--
+                --<a class="wife" href="#">
+                  <img src="img/Manish.JPG">
+                  <br />Manish Sethi</a>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="img/Mithu.JPG">
+                        <br />Akshat Sethi</a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="img/Neharika.JPG">
+                        <br />
+                        Neharika Sethi</a>
+                    </li>
+                  </ul>
               </li>
               <li>
                 <a class="husbandwithimg" href="#">
@@ -374,6 +433,13 @@
 
       $("ul").find("li").each(function(i) {
         $(this).delay(500 * i).show(0);
+      });
+
+      $('.husbandwithimg').on('click', function(event) {
+        $(this).nextAll('ul:first').toggle();
+      });
+      $('.wife').on('click', function(event) {
+        $(this).nextAll('ul:first').toggle();
       });
     };
   </script>
