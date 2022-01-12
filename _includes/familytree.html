@@ -63,8 +63,8 @@
               Late ShriChand Patni
               <br />
               1941 - 2022
-            </a>--
-            --<a class="wife" href="#">
+            </a><p>--
+            --</p><a id="maa" class="wife" href="#">
               <img src="img/GrandMa.jpeg">
               <br />
               Shanta Devi Patni
@@ -226,6 +226,7 @@
 
       $('.husbandwithimg').on('click', function(event) {
         $(this).nextAll('ul:first').slideToggle();
+        $(this).nextAll('#maa').slideToggle();
       });
       $('.wife').on('click', function(event) {
         $(this).nextAll('ul:first').slideToggle();
